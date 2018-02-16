@@ -16,10 +16,10 @@ exports.handler = function (event, context, callback) {
 		PhoneNumber: '+94715397214'
 	}).promise()
 		.then(data => {
-			// your code goes here
+			console.log(data);// your code goes here
 		})
 		.catch(err => {
-			// error handling goes here
+			console.log(err);// error handling goes here
 		});
 
 
