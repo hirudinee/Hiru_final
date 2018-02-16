@@ -1,4 +1,6 @@
 let AWS = require('aws-sdk');
+let connectionManager = require('./ConnectionManager');
+const rds = new SL.AWS.RDS(connectionManager);
 let SL = require('@slappforge/slappforge-sdk');
 const sqs = new SL.AWS.SQS(AWS);
 const sns = new AWS.SNS();
@@ -55,6 +57,16 @@ exports.handler = function (event, context, callback) {
 		.catch(err => {
 			// error handling goes here
 		});
+
+
+	// You must always end/destroy the DB connection after it's used
+	rds.beginTransaction({
+		instanceIdentifier: 'hiru'
+	}, function (error, connection) {
+		if (error) { throw err; }
+	});
+
+
 
 	sqs.sendMessage({
 		MessageBody: 'w',
