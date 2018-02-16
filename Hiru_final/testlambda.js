@@ -4,7 +4,7 @@ exports.handler = function (event, context, callback) {
 
 	sns.subscribe({
 		Protocol: 'email',
-		Endpoint: 'hirudineel@gmail',
+		Endpoint: 'hirudineel@gmail.com',
 		TopicArn: 'arn:aws:sns:us-east-2:480964559519:Hiru'
 	}).promise()
 		.then(data => {
